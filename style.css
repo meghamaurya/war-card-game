@@ -1,0 +1,123 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+header {
+    text-align: center;
+    margin-top: 4vw;
+    margin-left: 2rem;
+    text-shadow: 0 1px 9px rgb(153, 82, 82);
+}
+
+#draw {
+    background-color: white;
+    border: 1px solid #8b4caf;
+    border-radius: 3px;
+    text-align: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    font-weight: bold;
+}
+
+
+#draw:hover {
+    background-color: #8b459b;
+    color: white;
+}
+
+.container {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 4rem);
+    grid-template-rows: 7rem 2rem 7rem;
+    gap: 5rem;
+    justify-content: center;
+    padding-top: 1rem;
+}
+
+.deck {
+    height: 160%;
+    width: 160%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    border-radius: .5rem;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.421), 0 6px 20px 0 rgba(0, 0, 0, 0.874);
+}
+
+.computer-deck {
+    background-image: linear-gradient(rgb(200, 0, 255), yellow);
+    color: white;
+    text-shadow: 2px 2px 1px #000000;
+}
+
+.player-deck {
+    background-image: linear-gradient(rgb(200, 0, 255), yellow);
+    color: white;
+    text-shadow: 2px 2px 1px #000000;
+}
+
+.text {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-left: 2rem;
+    font-size: xx-large;
+    font-weight: bolder;
+    text-shadow: 0 1px 9px rgb(153, 82, 82);
+}
+
+.card {
+    position: relative;
+    height: 160%;
+    width: 160%;
+    border: 1px solid black;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    cursor: pointer;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.421), 0 6px 20px 0 rgba(0, 0, 0, 0.874);
+}
+
+.card.red {
+    color: red;
+}
+
+.card.black {
+    color: black;
+}
+
+.card::before,
+.card::after {
+    position: absolute;
+    content: attr(data-value);
+    font-size: 2rem;
+
+}
+
+.card::before {
+    top: .5rem;
+    left: .5rem;
+}
+
+.card::after {
+    bottom: .5rem;
+    right: .5rem;
+    transform: rotate(180deg);
+}
