@@ -43,7 +43,16 @@ const CARD_VALUE_MAP = {                                               //give th
 
 let playerDeck, computerDeck, inRound, stop
 
+var $sound1 = $("<audio preload=auto>");
+var $sound2 = $("<audio preload=auto>");
+var $sound3 = $("<audio preload=auto>");
+$sound1.attr("src", 'https://assets.mixkit.co/sfx/download/mixkit-retro-arcade-game-over-470.wav')
+$sound2.attr('src', "https://www.kasandbox.org/programming-sounds/rpg/metal-clink.mp3");
+$sound3.attr('src', 'https://assets.mixkit.co/sfx/download/mixkit-cartoon-girl-saying-no-no-no-2257.wav');
+
+
 $("#draw").click(() => {                                                 //click on draw btn so it show random card to both players
+    $("body").append($sound1);
     if (stop) {                                                          //to start the game
         startGame()
         return
@@ -91,15 +100,18 @@ function flipCards() {                                                          
     updateDeckCount()
 
     if (isRoundWinner(playerCard, computerCard)) {                                       //check winner   
-        $(".text").html(" You Win🥳")                                                     //if player wins
+        $(".text").html(" You Win🥳")                                                    //if player wins
+        $sound1[0].play();
         playerDeck.push(playerCard)                                                      //push the player card to computer deck
         playerDeck.push(computerCard)
     } else if (isRoundWinner(computerCard, playerCard)) {                                //if the computer wins
         $(".text").html(" You Lose😕")
+        $sound3[0].play();
         computerDeck.push(playerCard)                                                     //push the computer card to player deck
         computerDeck.push(computerCard)
     } else {
         $(".text").html(" Draw😌")
+        $sound2[0].play();
         playerDeck.push(playerCard)                                                      //for draw card remains same
         computerDeck.push(computerCard)
     }
